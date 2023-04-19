@@ -20,17 +20,6 @@ namespace ProyectoUnidad1
         }
 
 
-        void crearCarpeta(Notas nota)
-        {
-
-        }        
-
-        
-        void eliminarCarpeta()
-        {
-
-        }
-
 
 
     }

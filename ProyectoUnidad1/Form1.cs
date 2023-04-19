@@ -2,15 +2,15 @@ namespace ProyectoUnidad1
 {
     public partial class Form1 : Form
     {
+        int cont = 0;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void btnIniciar_Click(object sender, EventArgs e)
+        public void inicio()
         {
-            int cont= 0;
-            if(tbUser.Text == "admin" && tbPass.Text == "admin")
+            if (tbUser.Text == "admin" && tbPass.Text == "admin")
             {
                 Principal principal = new Principal();
                 principal.Show();
@@ -22,12 +22,34 @@ namespace ProyectoUnidad1
                 cont++;
             }
 
-            if(cont == 3)
+            if (cont == 3)
             {
                 MessageBox.Show("Ha excedido el número de intentos");
                 Application.Exit();
             }
+        }
 
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+
+            inicio();
+
+        }
+
+        private void tbUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                inicio();
+            }
+        }
+
+        private void tbPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                inicio();
+            }
         }
     }
 }

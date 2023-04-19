@@ -28,21 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.lbdorn_carpetas = new System.Windows.Forms.ListBox();
             this.lbdorn_notas = new System.Windows.Forms.ListBox();
             this.txbnotas = new System.Windows.Forms.TextBox();
             this.btndorn_nuevo = new System.Windows.Forms.Button();
-            this.btndorn_size = new System.Windows.Forms.Button();
             this.btndorn_color = new System.Windows.Forms.Button();
             this.btndorn_fuente = new System.Windows.Forms.Button();
             this.btndorn_mas = new System.Windows.Forms.Button();
-            this.cmdorn_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lbfecha = new System.Windows.Forms.Label();
             this.btndorn_newCar = new System.Windows.Forms.Button();
-            this.cmdorn_menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbdorn_carpetas
@@ -95,63 +90,40 @@
             this.btndorn_nuevo.UseVisualStyleBackColor = false;
             this.btndorn_nuevo.Click += new System.EventHandler(this.btndorn_nuevo_Click);
             // 
-            // btndorn_size
-            // 
-            this.btndorn_size.BackColor = System.Drawing.Color.Transparent;
-            this.btndorn_size.BackgroundImage = global::ProyectoUnidad1.Properties.Resources.text_size;
-            this.btndorn_size.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btndorn_size.Location = new System.Drawing.Point(604, 14);
-            this.btndorn_size.Name = "btndorn_size";
-            this.btndorn_size.Size = new System.Drawing.Size(32, 32);
-            this.btndorn_size.TabIndex = 4;
-            this.btndorn_size.Text = "T";
-            this.btndorn_size.UseVisualStyleBackColor = false;
-            // 
             // btndorn_color
             // 
             this.btndorn_color.BackColor = System.Drawing.Color.Transparent;
             this.btndorn_color.BackgroundImage = global::ProyectoUnidad1.Properties.Resources.font_size;
             this.btndorn_color.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btndorn_color.Location = new System.Drawing.Point(637, 14);
+            this.btndorn_color.Location = new System.Drawing.Point(621, 12);
             this.btndorn_color.Name = "btndorn_color";
             this.btndorn_color.Size = new System.Drawing.Size(32, 32);
             this.btndorn_color.TabIndex = 5;
             this.btndorn_color.UseVisualStyleBackColor = false;
+            this.btndorn_color.Click += new System.EventHandler(this.btndorn_color_Click);
             // 
             // btndorn_fuente
             // 
             this.btndorn_fuente.BackColor = System.Drawing.Color.Transparent;
             this.btndorn_fuente.BackgroundImage = global::ProyectoUnidad1.Properties.Resources.font;
             this.btndorn_fuente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btndorn_fuente.Location = new System.Drawing.Point(670, 14);
+            this.btndorn_fuente.Location = new System.Drawing.Point(659, 12);
             this.btndorn_fuente.Name = "btndorn_fuente";
             this.btndorn_fuente.Size = new System.Drawing.Size(32, 32);
             this.btndorn_fuente.TabIndex = 6;
             this.btndorn_fuente.UseVisualStyleBackColor = false;
+            this.btndorn_fuente.Click += new System.EventHandler(this.btndorn_fuente_Click);
             // 
             // btndorn_mas
             // 
             this.btndorn_mas.BackColor = System.Drawing.Color.Transparent;
             this.btndorn_mas.BackgroundImage = global::ProyectoUnidad1.Properties.Resources.expand_button;
-            this.btndorn_mas.ContextMenuStrip = this.cmdorn_menu;
             this.btndorn_mas.Location = new System.Drawing.Point(890, 14);
             this.btndorn_mas.Name = "btndorn_mas";
             this.btndorn_mas.Size = new System.Drawing.Size(32, 32);
             this.btndorn_mas.TabIndex = 7;
             this.btndorn_mas.UseVisualStyleBackColor = false;
-            // 
-            // cmdorn_menu
-            // 
-            this.cmdorn_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.cmdorn_menu.Name = "cmdorn_menu";
-            this.cmdorn_menu.Size = new System.Drawing.Size(110, 26);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
-            this.toolStripMenuItem1.Text = "Nuevo";
+            this.btndorn_mas.Click += new System.EventHandler(this.btndorn_mas_Click);
             // 
             // lbfecha
             // 
@@ -182,7 +154,6 @@
             this.Controls.Add(this.btndorn_mas);
             this.Controls.Add(this.btndorn_fuente);
             this.Controls.Add(this.btndorn_color);
-            this.Controls.Add(this.btndorn_size);
             this.Controls.Add(this.btndorn_nuevo);
             this.Controls.Add(this.txbnotas);
             this.Controls.Add(this.lbdorn_notas);
@@ -191,7 +162,6 @@
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notas";
-            this.cmdorn_menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,13 +173,10 @@
         private ListBox lbdorn_notas;
         private TextBox txbnotas;
         private Button btndorn_nuevo;
-        private Button btndorn_size;
         private Button btndorn_color;
         private Button btndorn_fuente;
         private Button btndorn_mas;
         private Label lbfecha;
         private Button btndorn_newCar;
-        private ContextMenuStrip cmdorn_menu;
-        private ToolStripMenuItem toolStripMenuItem1;
     }
 }

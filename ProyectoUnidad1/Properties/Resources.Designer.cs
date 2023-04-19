@@ -93,6 +93,16 @@ namespace ProyectoUnidad1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap instituto_tecnologico_de_ciudad_juarez_itcj_logo_10442924FF_seeklogo_com {
+            get {
+                object obj = ResourceManager.GetObject("instituto-tecnologico-de-ciudad-juarez-itcj-logo-10442924FF-seeklogo.com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap man__1_ {
             get {
                 object obj = ResourceManager.GetObject("man (1)", resourceCulture);
@@ -116,6 +126,16 @@ namespace ProyectoUnidad1.Properties {
         internal static System.Drawing.Bitmap notas_adhesivas__1_ {
             get {
                 object obj = ResourceManager.GetObject("notas-adhesivas (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap publicalo {
+            get {
+                object obj = ResourceManager.GetObject("publicalo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

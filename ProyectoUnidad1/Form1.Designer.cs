@@ -54,6 +54,7 @@
             this.tbPass.Size = new System.Drawing.Size(156, 23);
             this.tbPass.TabIndex = 2;
             this.tbPass.UseSystemPasswordChar = true;
+            this.tbPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPass_KeyDown);
             // 
             // tbUser
             // 
@@ -62,6 +63,7 @@
             this.tbUser.PlaceholderText = "Usuario";
             this.tbUser.Size = new System.Drawing.Size(156, 23);
             this.tbUser.TabIndex = 1;
+            this.tbUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUser_KeyDown);
             // 
             // pictureBox1
             // 

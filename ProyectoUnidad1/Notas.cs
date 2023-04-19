@@ -13,6 +13,9 @@ namespace ProyectoUnidad1
         private string contenido;
         private string fecha;
         private string hora;
+        private Font fuente; // nuevo campo para la fuente
+        private Color color;
+
 
         public Notas()
         {
@@ -20,13 +23,18 @@ namespace ProyectoUnidad1
             contenido = "";
             fecha = "";
             hora = "";
+            fuente = SystemFonts.DefaultFont;
+            color = Color.Black;
         }
-        public Notas(string titulo, string contenido, string fecha, string hora)
+        public Notas(string titulo, string contenido, string fecha, string hora, Font font, Color color )
         {
             this.titulo = titulo;
             this.contenido = contenido;
             this.fecha = fecha;
             this.hora = hora;
+            this.fuente = font;
+            this.color = color;
+
         }
         public string Titulo
         {
@@ -72,43 +80,33 @@ namespace ProyectoUnidad1
                 hora = value;
             }
         }
-        public void crearNota()
+
+        public Font Fuente
         {
-            List<string> notas = new List<string>();
-
-            string titulo = this.titulo;
-            string contenido = this.contenido;
-            string fecha = this.fecha;
-            string hora = this.hora;
-                
-            notas.Add(titulo);
-            notas.Add(contenido);
-            notas.Add(fecha);
-            notas.Add(hora);
-
-
-
+            get
+            {
+                return fuente;
+            }
+            set
+            {
+                fuente = value;
+            }
         }
-        public void eliminarNota()
+        public Color Color
         {
-           List<string> notas = new List<string>();
-            string titulo = this.titulo;
-            string contenido = this.contenido;
-            string fecha = this.fecha;
-            string hora = this.hora;
-                
-            notas.Remove(titulo);
-            notas.Remove(contenido);
-            notas.Remove(fecha);
-            notas.Remove(hora);
+            get
+            {
+                return color;
+            }
+            set
+            {
+                color = value;
+            }
         }
-        public void mostrarNota()
-        {
 
+        
 
-            
-            
-        }
+       
 
 
 

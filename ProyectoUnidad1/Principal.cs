@@ -5,18 +5,21 @@ namespace ProyectoUnidad1
 {
     public partial class Principal : Form
     {
-       
+
         static List<Notas> notas = new List<Notas>();
         static List<Carpetas> Carpetas = new List<Carpetas>();
-        Notas crear = new Notas();
-      
+        static Font fuente;
+        static Color color;
+
         public Principal()
         {
             InitializeComponent();
 
             Carpetas.Add(new Carpetas("principal"));
-            lbdorn_carpetas.Items.Add("principal"); 
+            lbdorn_carpetas.Items.Add("principal");
             lbdorn_carpetas.SelectedIndex = 0;
+            fuente = new Font("Arial", 12, FontStyle.Regular);
+            color = Color.Black;
 
         }
 
@@ -25,15 +28,17 @@ namespace ProyectoUnidad1
 
             if (lbdorn_notas.SelectedIndex != -1)
             {
-                string nombreCarpeta = lbdorn_carpetas.SelectedItem.ToString();           
+                string nombreCarpeta = lbdorn_carpetas.SelectedItem.ToString();
                 Carpetas carpeta = Carpetas.FirstOrDefault(c => c.nombre == nombreCarpeta);
-        
+
                 if (carpeta != null)
                 {
                     List<Notas> notasCarpeta = carpeta.notas;
                     Notas notaSeleccionada = notasCarpeta[lbdorn_notas.SelectedIndex];
                     txbnotas.Text = notaSeleccionada.Contenido;
                     lbfecha.Text = notaSeleccionada.Fecha;
+                    txbnotas.Font = notaSeleccionada.Fuente;
+                    txbnotas.ForeColor = notaSeleccionada.Color;
                 }
             }
 
@@ -55,18 +60,25 @@ namespace ProyectoUnidad1
             string contenido = txbnotas.Text;
             string fecha = lbfecha.Text;
             string hora = DateTime.Now.ToString("hh:mm");
+            Font fuente = txbnotas.Font;
+            Color color = txbnotas.ForeColor;
 
             int index = lbdorn_notas.SelectedIndex;
 
             if (index != -1)
             {
+                notas[index].Titulo = titulo;
                 notas[index].Contenido = contenido;
-                MessageBox.Show("La nota ha sido actualizada correctamente.");
+                notas[index].Fecha = fecha;
+                notas[index].Hora = hora;
+                notas[index].Fuente = fuente;
+                notas[index].Color = color;
+
             }
             else
             {
-                bool notaExistente = notas.Any(n => n.Titulo == titulo && n.Contenido == contenido);
 
+                bool notaExistente = notas.Any(n => n.Titulo == titulo && n.Contenido == contenido);
                 string nombreCarpeta = lbdorn_carpetas.SelectedItem.ToString();
                 Carpetas carpeta = Carpetas.FirstOrDefault(c => c.nombre == nombreCarpeta);
 
@@ -82,11 +94,19 @@ namespace ProyectoUnidad1
                 }
                 else
                 {
-                    Notas notascrear = new Notas(titulo, contenido, fecha, hora);
-                    notas.Add(notascrear); 
-                    carpeta.notas.Add(notascrear);
-                    lbdorn_notas.Items.Add(notascrear.Titulo);
-                    MessageBox.Show("La nota ha sido creada correctamente.");
+                    try
+                    {
+                        Notas notascrear = new Notas(titulo, contenido, fecha, hora, fuente, color);
+
+                        notas.Add(notascrear);
+                        carpeta.notas.Add(notascrear);
+                        lbdorn_notas.Items.Add(notascrear.Titulo);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("error " + ex.Message);
+                    }
                 }
             }
 
@@ -95,12 +115,13 @@ namespace ProyectoUnidad1
 
         private void txbnotas_TextChanged(object sender, EventArgs e)
         {
-           
+
+
         }
 
         private void lbdorn_carpetas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbdorn_notas.Items.Clear(); 
+            lbdorn_notas.Items.Clear();
 
             string nombreCarpeta = lbdorn_carpetas.SelectedItem.ToString();
             Carpetas carpeta = Carpetas.FirstOrDefault(c => c.nombre == nombreCarpeta);
@@ -135,6 +156,76 @@ namespace ProyectoUnidad1
                 MessageBox.Show("La carpeta ha sido creada correctamente.");
             }
 
+        }
+
+        private ContextMenuStrip menu = new ContextMenuStrip();
+        private ToolStripMenuItem menuItem1 = new ToolStripMenuItem();
+        private ToolStripMenuItem menuItem2 = new ToolStripMenuItem();
+
+        private void CrearMenu()
+        {
+            menuItem1.Text = "Eliminar nota";
+            menuItem1.Click += MenuItem1_Click;
+            menuItem2.Text = "Acerca de";
+            menuItem2.Click += MenuItem2_Click;
+
+            menu.Items.AddRange(new ToolStripItem[] { menuItem1, menuItem2 });
+        }
+        private void MenuItem1_Click(object sender, EventArgs e)
+        {
+            //Eliminar la nota que esta activa
+            string nombreCarpeta = lbdorn_carpetas.SelectedItem.ToString();
+            Carpetas carpeta = Carpetas.FirstOrDefault(c => c.nombre == nombreCarpeta);
+            if (carpeta != null && lbdorn_notas.SelectedIndex != (-1))
+            {
+                List<Notas> notasCarpeta = carpeta.notas;
+                Notas notaSeleccionada = notasCarpeta[lbdorn_notas.SelectedIndex];
+                notasCarpeta.Remove(notaSeleccionada);
+                lbdorn_notas.Items.Remove(notaSeleccionada.Titulo);
+                txbnotas.Text = "";
+                lbfecha.Text = "";
+            }
+        }
+
+        private void MenuItem2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Creado por: Daniel Octavio Ramirez Neri\nEstudiante de Ing. En sistemas computacionales \n Version 1.0.0");
+         }
+
+
+
+        private void btndorn_mas_Click(object sender, EventArgs e)
+        {
+            CrearMenu();
+            menu.Show(Cursor.Position);
+        }
+
+        public Font cambiarFuente()
+        {
+            // Mostrar un cuadro de diálogo de selección de fuente
+            FontDialog dialog = new FontDialog();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                return dialog.Font;
+            }
+            return fuente;
+        }
+
+        private void btndorn_fuente_Click(object sender, EventArgs e)
+        {
+
+            txbnotas.Font = cambiarFuente();
+        }
+
+        private void btndorn_color_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                color = colorDialog.Color;
+                txbnotas.ForeColor = color;
+            }
         }
     }
 }
